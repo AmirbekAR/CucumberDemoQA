@@ -1,5 +1,6 @@
 package demo.steps;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -20,6 +21,9 @@ public class Hook {
 
     @Before(order = 0)
     public void setUp() {
+        // Настройка WebDriverManager для автоматической загрузки нужного драйвера
+        WebDriverManager.chromedriver().setup();
+
         // Устанавливаем браузер как Chrome
         Configuration.browser = "chrome";
 
@@ -36,11 +40,8 @@ public class Hook {
                 "--remote-debugging-port=9222" // Порт для отладки
         );
 
-        // Устанавливаем ChromeDriver (если используется)
+        // Устанавливаем ChromeDriver с опциями
         Configuration.browserCapabilities = options;
-
-        // Если используется Jenkins или CI, можно указать путь к драйверу
-        // System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
     }
 
     @After(order = 0)
@@ -53,7 +54,8 @@ public class Hook {
 
     @io.cucumber.java.AfterStep
     public void makeScreenShot() {
-        String testName = "unknown_test"; // Здесь можно получить имя теста динамически
+        // Получаем динамическое имя теста через Cucumber context (если нужно)
+        String testName = "unknown_test"; // В реальности получите имя теста динамически
         String threadId = String.valueOf(Thread.currentThread().getId());
         String screenshotName = "step_" + testName + "_" + threadId + "_" + System.currentTimeMillis();
         System.out.println("Making screenshot after step...");
