@@ -1,6 +1,6 @@
 Feature: Проверка на
 
-  @SmokeSwiss
+  @Regression
   Scenario Outline: Swiss Trade test for user login
     Given User is on SwissTrade login page
     And User should login with following credentials "<username>" "<password>"
