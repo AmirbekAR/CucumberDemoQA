@@ -12,8 +12,9 @@ import org.junit.platform.suite.api.Suite;
 @ConfigurationParameter(key = Constants.GLUE_PROPERTY_NAME, value = "demo.steps")
 @ConfigurationParameter(key = Constants.FILTER_TAGS_PROPERTY_NAME, value = "@Regression")
 @ConfigurationParameter(key = Constants.EXECUTION_DRY_RUN_PROPERTY_NAME, value = "true")
-@ConfigurationParameter(key = "cucumber.execution.parallel.enabled", value = "true") // Включение параллельного запуска
-@ConfigurationParameter(key = "cucumber.execution.parallel.config.fixed.parallelism", value = "4") // Одновременный запуск браузеров
+@ConfigurationParameter(key = "cucumber.execution.parallel.enabled", value = "true") // включения параллельного запуска
+@ConfigurationParameter(key = "cucumber.execution.parallel.config.fixed.parallelism", value = "4") // одновременное запуск браузеров
 @ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME, value = "pretty, io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm, json:target/cucumber-reports/CucumberTestReport.json")
+
 public class CucumberRunner {
 }
