@@ -6,6 +6,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Hook {
 
@@ -19,12 +20,32 @@ public class Hook {
 
     @Before(order = 0)
     public void setUp() {
-        Configuration.browser = "chrome"; // Вы можете динамически выбирать браузер
-        Configuration.headless = false; // для безголового режима
+        // Устанавливаем браузер как Chrome
+        Configuration.browser = "chrome";
+
+        // Проверяем, если нужно использовать headless режим
+        Configuration.headless = true; // Устанавливаем headless режим
+
+        // Настройка опций для Chrome
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments(
+                "--headless",            // Режим без интерфейса
+                "--disable-gpu",         // Отключение GPU
+                "--no-sandbox",          // Отключение sandbox (нужно для CI/CD)
+                "--disable-dev-shm-usage", // Для работы с ограниченным ресурсом памяти
+                "--remote-debugging-port=9222" // Порт для отладки
+        );
+
+        // Устанавливаем ChromeDriver (если используется)
+        Configuration.browserCapabilities = options;
+
+        // Если используется Jenkins или CI, можно указать путь к драйверу
+        // System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
     }
 
     @After(order = 0)
     public void tearDownAllure() {
+        // Очистка cookies и закрытие браузера
         Selenide.clearBrowserCookies();
         Selenide.closeWebDriver();
         SelenideLogger.removeListener("AllureSelenide"); // Удаляем слушателя после теста
