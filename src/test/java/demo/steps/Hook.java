@@ -24,25 +24,10 @@ public class Hook {
         // Инициализация WebDriver с использованием WebDriverManager
         WebDriverManager.chromedriver().setup();  // Автоматически загружает и настраивает ChromeDriver
 
-<<<<<<< HEAD
-        // Устанавливаем браузер как Chrome
-        Configuration.browser = "chrome";
-
-
-        // Настройка опций для Chrome
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments(
-                "--disable-gpu",         // Отключение GPU
-                "--no-sandbox",          // Отключение sandbox (нужно для CI/CD)
-                "--disable-dev-shm-usage", // Для работы с ограниченным ресурсом памяти
-                "--remote-debugging-port=9222" // Порт для отладки
-        );
-=======
         // Опции для Chrome
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized"); // Открытие окна браузера на весь экран
         options.addArguments("--disable-notifications"); // Отключение уведомлений
->>>>>>> 069564b (for changes steps)
 
         // Конфигурация Selenide
         Configuration.browser = "chrome";

@@ -83,10 +83,6 @@ public class PracticeFormStepDef extends PracticeFormPage {
 
     @And("user download picture")
     public void userDownloadPicture() {
-<<<<<<< HEAD
-//        elementActions.clickElementWithJsExecutor(getUploadPicture());
-=======
->>>>>>> 069564b (for changes steps)
         String filePath = "/Users/amir/Desktop/Screenshot2024.png";
         File file = new File(filePath);
         SelenideElement uploadButton = getUploadPicture();
