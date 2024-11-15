@@ -1,7 +1,7 @@
 Feature: All test for the web talent LMS
 
 
-@Regression2
+@Regression
   Scenario Outline:
     Given user is on TalentLMS login page
     And user log in "<Username>" "<Password>"

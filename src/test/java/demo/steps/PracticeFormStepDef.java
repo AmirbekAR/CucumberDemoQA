@@ -13,6 +13,7 @@ import pages.PracticeFormPage;
 import java.io.File;
 
 public class PracticeFormStepDef extends PracticeFormPage {
+    SelenideElementActions elementActions = new SelenideElementActions();
 
     @Given("Student Registration Form")
     public void openUrl() {
@@ -60,7 +61,6 @@ public class PracticeFormStepDef extends PracticeFormPage {
 
     @And("user choose subjects")
     public void userEnterSubjects() throws InterruptedException {
-        SelenideElementActions elementActions = new SelenideElementActions();
         getSubjectsInput().sendKeys("math");
         elementActions.pressEnter(getSubjectsInput());
         Selenide.sleep(1000);
@@ -68,7 +68,6 @@ public class PracticeFormStepDef extends PracticeFormPage {
 
     @And("user choose hobbies {string}")
     public void userChooseHobbies(String hobbies) {
-        SelenideElementActions elementActions = new SelenideElementActions();
         switch (hobbies) {
             case "Sports" :
                 elementActions.clickElementWithJsExecutor(getSportsClick());
@@ -84,9 +83,11 @@ public class PracticeFormStepDef extends PracticeFormPage {
 
     @And("user download picture")
     public void userDownloadPicture() {
-        String filePath = "/Users/amir/Desktop/Screenshot2024";
+//        elementActions.clickElementWithJsExecutor(getUploadPicture());
+        String filePath = "/Users/amir/Desktop/Screenshot2024.png";
         File file = new File(filePath);
         SelenideElement uploadButton = getUploadPicture();
+        Selenide.sleep(2000);
         uploadButton.uploadFile(file);
     }
 
@@ -98,7 +99,6 @@ public class PracticeFormStepDef extends PracticeFormPage {
 
     @And("user select state {string}, {string}")
     public void userSelectState(String states, String city) {
-        SelenideElementActions elementActions = new SelenideElementActions();
         elementActions.click(getClickState());
         Selenide.sleep(1000);
 

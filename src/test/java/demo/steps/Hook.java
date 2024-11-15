@@ -27,13 +27,10 @@ public class Hook {
         // Устанавливаем браузер как Chrome
         Configuration.browser = "chrome";
 
-        // Проверяем, если нужно использовать headless режим
-        Configuration.headless = false; // Устанавливаем headless режим
 
         // Настройка опций для Chrome
         ChromeOptions options = new ChromeOptions();
         options.addArguments(
-                "--headless",            // Режим без интерфейса
                 "--disable-gpu",         // Отключение GPU
                 "--no-sandbox",          // Отключение sandbox (нужно для CI/CD)
                 "--disable-dev-shm-usage", // Для работы с ограниченным ресурсом памяти

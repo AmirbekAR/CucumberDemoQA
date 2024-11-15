@@ -15,9 +15,6 @@ import static com.codeborne.selenide.Condition.*;
 
 public class SelenideElementActions {
 
-    // Actions и WebDriver получаем через WebDriverRunner (если используете Selenide)
-    private final Actions actions = new Actions(Selenide.webdriver().driver().getWebDriver());
-
     // Общий метод для ожидания видимости и прокрутки
     private void waitAndScroll(SelenideElement element, Duration duration) {
         element.shouldBe(visible, duration);
@@ -115,17 +112,18 @@ public class SelenideElementActions {
         executor.executeScript("arguments[0].value = '';", element);
     }
 
-    // Двойной клик по WebElement
-    public void doubleClick(WebElement element) {
-        waitElementToBeClickable(element);
-        actions.doubleClick(element).build().perform();
-    }
-
-    // Правый клик по WebElement
-    public void rightClick(WebElement element) {
-        waitElementToBeClickable(element);
-        actions.contextClick(element).build().perform();
-    }
+//    // Двойной клик по WebElement
+//    public void doubleClick(WebElement element) {
+//        waitElementToBeClickable(element);
+//        Action action;
+//        actions.doubleClick(element).build().perform();
+//    }
+//
+//    // Правый клик по WebElement
+//    public void rightClick(WebElement element) {
+//        waitElementToBeClickable(element);
+//        actions.contextClick(element).build().perform();
+//    }
 
     // Проверка видимости WebElement
     public boolean isElementVisible(WebElement element) {
