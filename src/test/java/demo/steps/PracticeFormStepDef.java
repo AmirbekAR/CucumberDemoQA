@@ -84,7 +84,7 @@ public class PracticeFormStepDef extends PracticeFormPage {
 
     @And("user download picture")
     public void userDownloadPicture() {
-        String filePath = "/Users/amir/Desktop/Screenshot 2024-11-08 at 22.45.58.png";
+        String filePath = "/Users/amir/Desktop/Screenshot2024";
         File file = new File(filePath);
         SelenideElement uploadButton = getUploadPicture();
         uploadButton.uploadFile(file);

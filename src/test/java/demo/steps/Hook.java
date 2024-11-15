@@ -28,7 +28,7 @@ public class Hook {
         Configuration.browser = "chrome";
 
         // Проверяем, если нужно использовать headless режим
-        Configuration.headless = true; // Устанавливаем headless режим
+        Configuration.headless = false; // Устанавливаем headless режим
 
         // Настройка опций для Chrome
         ChromeOptions options = new ChromeOptions();
