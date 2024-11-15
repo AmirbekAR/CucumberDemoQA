@@ -20,10 +20,11 @@ public class Hook {
     }
 
     @Before(order = 0)
-    public void setUp() {
-        // Настройка WebDriverManager для автоматической загрузки нужного драйвера
-        WebDriverManager.chromedriver().setup();
+    public void setUpDriver() {
+        // Инициализация WebDriver с использованием WebDriverManager
+        WebDriverManager.chromedriver().setup();  // Автоматически загружает и настраивает ChromeDriver
 
+<<<<<<< HEAD
         // Устанавливаем браузер как Chrome
         Configuration.browser = "chrome";
 
@@ -36,8 +37,19 @@ public class Hook {
                 "--disable-dev-shm-usage", // Для работы с ограниченным ресурсом памяти
                 "--remote-debugging-port=9222" // Порт для отладки
         );
+=======
+        // Опции для Chrome
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized"); // Открытие окна браузера на весь экран
+        options.addArguments("--disable-notifications"); // Отключение уведомлений
+>>>>>>> 069564b (for changes steps)
 
-        // Устанавливаем ChromeDriver с опциями
+        // Конфигурация Selenide
+        Configuration.browser = "chrome";
+        Configuration.browserSize = "1920x1080";  // Устанавливаем размер окна браузера
+        Configuration.timeout = 10000;  // Устанавливаем таймаут ожидания элементов
+
+        // Устанавливаем дополнительные опции для Chrome
         Configuration.browserCapabilities = options;
     }
 
