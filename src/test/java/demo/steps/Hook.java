@@ -22,6 +22,13 @@ public class Hook {
     @Before(order = 0)
     public void setUpDriver() {
 
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-gpu");  // Отключение GPU
+        options.addArguments("--no-sandbox");  // Отключение песочницы (полезно для Docker/CI)
+        options.addArguments("--disable-dev-shm-usage");  // Отключение использования временных файлов
+        options.addArguments("--start-maximized");  // Открытие окна на весь экран
+        options.addArguments("--disable-notifications");  // Отключение уведомлений
+
         // Конфигурация Selenide
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";  // Устанавливаем размер окна браузера
