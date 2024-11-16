@@ -32,7 +32,8 @@ public class Hook {
         // Конфигурация Selenide
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";  // Устанавливаем размер окна браузера
-        Configuration.timeout = 10000;  // Устанавливаем таймаут ожидания элементов
+        Configuration.timeout = 10000;  // Таймаут ожидания для поиска элементов
+        Configuration.pageLoadTimeout = 60000;  // Таймаут на загрузку страницы (60 секунд)
 
         // Устанавливаем дополнительные опции для Chrome
         Configuration.browserCapabilities = options;
