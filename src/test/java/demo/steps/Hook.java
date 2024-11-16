@@ -21,13 +21,6 @@ public class Hook {
 
     @Before(order = 0)
     public void setUpDriver() {
-        // Инициализация WebDriver с использованием WebDriverManager
-        WebDriverManager.chromedriver().setup();  // Автоматически загружает и настраивает ChromeDriver
-
-        // Опции для Chrome
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized"); // Открытие окна браузера на весь экран
-        options.addArguments("--disable-notifications"); // Отключение уведомлений
 
         // Конфигурация Selenide
         Configuration.browser = "chrome";
@@ -35,8 +28,6 @@ public class Hook {
         Configuration.timeout = 10000;  // Таймаут ожидания для поиска элементов
         Configuration.pageLoadTimeout = 60000;  // Таймаут на загрузку страницы (60 секунд)
 
-        // Устанавливаем дополнительные опции для Chrome
-        Configuration.browserCapabilities = options;
     }
 
     @After(order = 0)
