@@ -28,12 +28,16 @@ public class Hook {
         options.addArguments("--disable-dev-shm-usage");  // Отключение использования временных файлов
         options.addArguments("--start-maximized");  // Открытие окна на весь экран
         options.addArguments("--disable-notifications");  // Отключение уведомлений
+        options.addArguments("--headless");  // Запуск в headless-режиме (полезно для CI/CD)
+        options.addArguments("--remote-debugging-port=9222");  // Установка порта для отладки
+        options.addArguments("--no-sandbox");  // Используется для предотвращения ошибок в CI (особенно в Docker)
 
-        // Конфигурация Selenide
+        // Настройки Selenide
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";  // Устанавливаем размер окна браузера
         Configuration.timeout = 10000;  // Таймаут ожидания для поиска элементов
         Configuration.pageLoadTimeout = 60000;  // Таймаут на загрузку страницы (60 секунд)
+        Configuration.browserCapabilities = options;  // Применение настроек ChromeOptions
 
     }
 
